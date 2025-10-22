@@ -1,0 +1,89 @@
+# ===============================
+# Maven / Java
+# ===============================
+/target/
+/*.log
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+*.ipr
+*.iws
+*.log
+*.tmp
+*.bak
+*.swp
+*.DS_Store
+
+# ===============================
+# IDEs
+# ===============================
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+/out/
+
+# Eclipse
+/.classpath
+/.project
+/.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# ===============================
+# Maven Wrapper
+# ===============================
+/.mvn/wrapper/maven-wrapper.jar
+
+# ===============================
+# Build / Generated
+# ===============================
+/target/
+/generated-sources/
+/generated-test-sources/
+/**/generated-sources/
+/**/generated-test-sources/
+/site/
+/dependency-reports/
+/jacoco/
+
+# ===============================
+# Logs / temp files
+# ===============================
+*.log
+*.tmp
+*.bak
+
+# ===============================
+# OS Files
+# ===============================
+.DS_Store
+Thumbs.db
+*.swp
+
+# ===============================
+# Spring Boot
+# ===============================
+/spring-boot-loader/
+spring-boot*.jar
+
+# ===============================
+# Avro Generated Code
+# ===============================
+/**/generated-sources/avro/
+
+# ===============================
+# Optional IDE & CI/CD files
+# ===============================
+.idea/
+*.iml
+*.ipr
+*.iws
+/.vscode/
+/target/
