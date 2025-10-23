@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
@@ -8,6 +8,7 @@
     <groupId>com.harpreetsaund</groupId>
     <artifactId>top-cat-pom</artifactId>
     <version>1.0.0</version>
+
     <packaging>pom</packaging>
 
     <name>Top Cat Master POM</name>
@@ -17,40 +18,32 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.5</version>
+        <version>3.5.6</version>
         <relativePath/>
     </parent>
 
     <properties>
-        <!-- Java version -->
         <java.version>21</java.version>
 
-        <!-- Compiler -->
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <spotless.version>3.0.0</spotless.version>
+        <checkstyle.version>3.6.0</checkstyle.version>
+        <jacoco.version>0.8.14</jacoco.version>
 
-        <!-- Encodings -->
+        <avro.version>1.12.1</avro.version>
+
+        <maven.compiler.plugin.version>3.11.0</maven.compiler.plugin.version>
+        <maven-site-plugin.version>3.21.0</maven-site-plugin.version>
+        <maven-project-info-reports-plugin.version>3.9.0</maven-project-info-reports-plugin.version>
+        <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Dependency versions -->
-        <avro.version>1.12.0</avro.version>
-
-        <!-- Plugin versions -->
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-        <spotless.version>2.43.0</spotless.version>
-        <checkstyle.version>3.5.0</checkstyle.version>
-        <jacoco.version>0.8.12</jacoco.version>
-        <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
-        <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
-
-        <!-- Spring Boot version -->
-        <spring.boot.version>3.5.5</spring.boot.version>
+        <spring.boot.version>3.5.6</spring.boot.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- Spring Boot Dependencies BOM -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -59,7 +52,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Avro -->
             <dependency>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro</artifactId>
@@ -68,6 +60,23 @@
         </dependencies>
     </dependencyManagement>
 
+    <!-- Reporting for Checkstyle & JaCoCo only -->
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle.version}</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <build>
         <pluginManagement>
             <plugins>
@@ -75,7 +84,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
+                    <version>${maven.compiler.plugin.version}</version>
                     <configuration>
                         <release>${java.version}</release>
                     </configuration>
@@ -131,14 +140,18 @@
                 </executions>
             </plugin>
 
-            <!-- Spotless code formatting -->
+            <!-- Spotless -->
             <plugin>
                 <groupId>com.diffplug.spotless</groupId>
                 <artifactId>spotless-maven-plugin</artifactId>
                 <version>${spotless.version}</version>
                 <configuration>
                     <java>
-                        <googleJavaFormat/>
+                        <eclipse>
+                            <file>${project.basedir}/eclipse-java-style.xml</file>
+                        </eclipse>
+                        <importOrder/>
+                        <removeUnusedImports/>
                     </java>
                 </configuration>
                 <executions>
@@ -194,7 +207,7 @@
                 </executions>
             </plugin>
 
-            <!-- Maven Site -->
+            <!-- Maven Site without default project-info reports -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
@@ -208,6 +221,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Maven Project Info Reports -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
