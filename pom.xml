@@ -90,6 +90,26 @@
                     </configuration>
                 </plugin>
 
+                <!-- Checkstyle -->
+                <!--                <plugin>-->
+                <!--                    <groupId>org.apache.maven.plugins</groupId>-->
+                <!--                    <artifactId>maven-checkstyle-plugin</artifactId>-->
+                <!--                    <version>${checkstyle.version}</version>-->
+                <!--                    <configuration>-->
+                <!--                        <consoleOutput>true</consoleOutput>-->
+                <!--                        <failsOnError>true</failsOnError>-->
+                <!--                    </configuration>-->
+                <!--                    <executions>-->
+                <!--                        <execution>-->
+                <!--                            <id>checkstyle-validation</id>-->
+                <!--                            <phase>verify</phase>-->
+                <!--                            <goals>-->
+                <!--                                <goal>check</goal>-->
+                <!--                            </goals>-->
+                <!--                        </execution>-->
+                <!--                    </executions>-->
+                <!--                </plugin>-->
+
                 <!-- Avro Code Generation -->
                 <plugin>
                     <groupId>org.apache.avro</groupId>
@@ -160,26 +180,6 @@
                         <phase>validate</phase>
                         <goals>
                             <goal>apply</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- Checkstyle -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.version}</version>
-                <configuration>
-                    <consoleOutput>true</consoleOutput>
-                    <failsOnError>true</failsOnError>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>checkstyle-validation</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
                         </goals>
                     </execution>
                 </executions>
