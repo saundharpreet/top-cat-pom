@@ -127,6 +127,8 @@
                             <configuration>
                                 <sourceDirectory>${project.basedir}/src/main/avro</sourceDirectory>
                                 <outputDirectory>${project.build.directory}/generated-sources/avro</outputDirectory>
+
+                                <!-- Use Java String instead of CharSequence -->
                                 <stringType>String</stringType>
                             </configuration>
                         </execution>
@@ -170,8 +172,6 @@
                         <eclipse>
                             <file>${project.basedir}/eclipse-java-style.xml</file>
                         </eclipse>
-                        <importOrder/>
-                        <removeUnusedImports/>
                     </java>
                 </configuration>
                 <executions>
