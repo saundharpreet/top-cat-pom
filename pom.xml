@@ -172,6 +172,7 @@
                         <eclipse>
                             <file>${project.basedir}/eclipse-java-style.xml</file>
                         </eclipse>
+                        <removeUnusedImports>true</removeUnusedImports>
                     </java>
                 </configuration>
                 <executions>
