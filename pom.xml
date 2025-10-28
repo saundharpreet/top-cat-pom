@@ -63,11 +63,11 @@
     <!-- Reporting for Checkstyle & JaCoCo only -->
     <reporting>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${checkstyle.version}</version>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
+<!--                <version>${checkstyle.version}</version>-->
+<!--            </plugin>-->
 
             <plugin>
                 <groupId>org.jacoco</groupId>
@@ -172,7 +172,7 @@
                         <eclipse>
                             <file>${project.basedir}/eclipse-java-style.xml</file>
                         </eclipse>
-                        <removeUnusedImports>true</removeUnusedImports>
+                        <removeUnusedImports/>
                     </java>
                 </configuration>
                 <executions>
