@@ -37,6 +37,8 @@
         <maven-project-info-reports-plugin.version>3.9.0</maven-project-info-reports-plugin.version>
         <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
 
+        <guava.version>33.5.0-jre</guava.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -60,6 +62,12 @@
             </dependency>
 
             <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>io.confluent</groupId>
                 <artifactId>kafka-avro-serializer</artifactId>
                 <version>${kafka-avro-serializer.version}</version>
@@ -68,20 +76,25 @@
                         <groupId>org.apache.commons</groupId>
                         <artifactId>commons-compress</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+    </dependencies>
+
     <!-- Reporting for Checkstyle & JaCoCo only -->
     <reporting>
         <plugins>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-checkstyle-plugin</artifactId>-->
-<!--                <version>${checkstyle.version}</version>-->
-<!--            </plugin>-->
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -113,26 +126,6 @@
                         <release>${java.version}</release>
                     </configuration>
                 </plugin>
-
-                <!-- Checkstyle -->
-                <!--                <plugin>-->
-                <!--                    <groupId>org.apache.maven.plugins</groupId>-->
-                <!--                    <artifactId>maven-checkstyle-plugin</artifactId>-->
-                <!--                    <version>${checkstyle.version}</version>-->
-                <!--                    <configuration>-->
-                <!--                        <consoleOutput>true</consoleOutput>-->
-                <!--                        <failsOnError>true</failsOnError>-->
-                <!--                    </configuration>-->
-                <!--                    <executions>-->
-                <!--                        <execution>-->
-                <!--                            <id>checkstyle-validation</id>-->
-                <!--                            <phase>verify</phase>-->
-                <!--                            <goals>-->
-                <!--                                <goal>check</goal>-->
-                <!--                            </goals>-->
-                <!--                        </execution>-->
-                <!--                    </executions>-->
-                <!--                </plugin>-->
 
                 <!-- Avro Code Generation -->
                 <plugin>
