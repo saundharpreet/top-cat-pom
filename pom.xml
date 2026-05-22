@@ -18,35 +18,42 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.3</version>
+        <version>4.0.6</version>
         <relativePath/>
     </parent>
 
     <properties>
         <java.version>21</java.version>
 
-        <spotless.version>3.2.1</spotless.version>
+        <spotless.version>3.5.1</spotless.version>
         <checkstyle.version>3.6.0</checkstyle.version>
         <jacoco.version>0.8.14</jacoco.version>
 
         <avro.version>1.12.1</avro.version>
-        <kafka-avro-serializer.version>8.1.1</kafka-avro-serializer.version>
+        <kafka-avro-serializer.version>8.2.1</kafka-avro-serializer.version>
 
-        <maven.compiler.plugin.version>3.15.0</maven.compiler.plugin.version>
+        <maven.compiler.plugin.version>4.0.0-beta-4</maven.compiler.plugin.version>
         <maven-site-plugin.version>4.0.0-M16</maven-site-plugin.version>
         <maven-project-info-reports-plugin.version>3.9.0</maven-project-info-reports-plugin.version>
-        <maven-enforcer-plugin.version>3.6.2</maven-enforcer-plugin.version>
+        <maven-enforcer-plugin.version>3.6.3</maven-enforcer-plugin.version>
 
-        <guava.version>33.5.0-jre</guava.version>
+        <guava.version>33.6.0-jre</guava.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <spring.boot.version>4.1.0-M2</spring.boot.version>
-        <org.springdoc.version>3.0.1</org.springdoc.version>
+        <spring.boot.version>4.1.0-RC1</spring.boot.version>
+        <org.springdoc.version>3.0.3</org.springdoc.version>
 
-        <com.ibm.mq.allclient.version>9.4.5.0</com.ibm.mq.allclient.version>
+        <com.ibm.mq.allclient.version>9.4.5.1</com.ibm.mq.allclient.version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/saundharpreet/top-cat-pom</url>
+        </repository>
+    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>
